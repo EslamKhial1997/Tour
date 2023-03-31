@@ -11,8 +11,20 @@ import { Box, Slider } from "@mui/material";
 import { NavLink } from "react-router-dom";
 
 const FlightTour = () => {
-  const [value, setValue] = React.useState([20, 90]);
-
+  const [value, setValue] = React.useState([20, 37]);
+  function valuetext(value) {
+    return `${value}°C`;
+  }
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+  const [value2, setValue2] = React.useState([20, 37]);
+  function valuetext2(value) {
+    return `${value2}°C`;
+  }
+  const handleChange2 = (event, newValue) => {
+    setValue2(newValue);
+  };
   return (
     <main className={Styles.mains}>
       <div className={Styles.title}>
@@ -55,12 +67,14 @@ const FlightTour = () => {
                 <span>00:00 to 23:59 </span>
               </div>
               <Box>
-                <Slider
-                  getAriaLabel={() => "Temperature range"}
-                  value={value}
-                  valueLabelDisplay="auto"
-                />
-              </Box>
+              <Slider
+                getAriaLabel={() => 'Temperature range'}
+                value={value2}
+                onChange={handleChange2}
+                valueLabelDisplay="auto"
+                getAriaValueText={valuetext2}
+              />
+            </Box>
             </div>
             <div className={Styles.range}>
               <div className=" d-flex justify-content-between">
@@ -68,12 +82,14 @@ const FlightTour = () => {
                 <span>00:00 to 23:59 </span>
               </div>
               <Box>
-                <Slider
-                  getAriaLabel={() => "Temperature range"}
-                  value={value}
-                  valueLabelDisplay="auto"
-                />
-              </Box>
+              <Slider
+                getAriaLabel={() => 'Temperature range'}
+                value={value}
+                onChange={handleChange}
+                valueLabelDisplay="auto"
+                getAriaValueText={valuetext}
+              />
+            </Box>
             </div>
           </div>
           <div
